@@ -36,6 +36,9 @@ class RosbridgeClient {
 	std::string port;
 	int sockfd;
 	std::map<std::string, Json::Value> last_values;
+    boost::condition_variable cond;
+    boost::mutex mut;
+    bool newData;
 
 public:
 	RosbridgeClient(std::string host, std::string port);

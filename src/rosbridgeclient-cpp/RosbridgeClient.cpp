@@ -21,20 +21,28 @@ void RosbridgeClient::dispatch(std::string s) {
 
 	Json::Value msg = root["msg"];
 	std::string receiver = root["receiver"].asString();
-
-	if (receiver.compare("/scan") == 0) {
-		last_values["/scan"] = msg["ranges"];
-		log("receiver: " + receiver);
-		log("extracted msg " + last_values["/scan"].toStyledString());
-	} else if (receiver.compare("/odom") == 0) {
-		last_values["/odom"] = msg["pose"];
-		log("receiver: " + receiver);
-		log("extracted msg " + last_values["/odom"].toStyledString());
-	} else if (receiver.compare("/amcl_pose") == 0) {
-		last_values["/amcl_pose"] = msg["pose"];
-		log("receiver: " + receiver);
-		log("extracted msg " + last_values["/amcl_pose"].toStyledString());
-	}
+    {
+            boost::lock_guard<boost::mutex> lock(mut);
+            newData = true;
+        	last_values[receiver] = msg;
+    }
+    cond.notify_all();
+//	if (receiver.compare("/scan") == 0) {
+//		last_values["/scan"] = msg["ranges"];
+//		log("receiver: " + receiver);
+//		log("extracted msg " + last_values["/scan"].toStyledString());
+//	} else if (receiver.compare("/odom") == 0) {
+//		last_values["/odom"] = msg["pose"];
+//		log("receiver: " + receiver);
+//		log("extracted msg " + last_values["/odom"].toStyledString());
+//	} else if (receiver.compare("/amcl_pose") == 0) {
+//		last_values["/amcl_pose"] = msg["pose"];
+//		log("receiver: " + receiver);
+//		log("extracted msg " + last_values["/amcl_pose"].toStyledString());
+//	}
+//	log(
+//			"added value to map with key " + receiver + ": "
+//					+ last_values[receiver].toStyledString());
 
 }
 
@@ -98,10 +106,15 @@ void RosbridgeClient::publish(const std::string& topic, const std::string& type,
 }
 
 void RosbridgeClient::wait() {
+    boost::unique_lock<boost::mutex> lock(mut);
+    cond.wait(lock);
 }
 
 ValuePtr RosbridgeClient::readLastValue(const std::string& topic) {
-	return ValuePtr(&last_values[topic]);
+	if (last_values.count(topic)==0)
+		return ValuePtr(new Json::Value());
+	else
+		return ValuePtr(new Json::Value(last_values[topic]));
 }
 
 void RosbridgeClient::spin() {
@@ -131,7 +144,7 @@ void RosbridgeClient::publish(const std::string& topic,
 void RosbridgeClient::send(std::string s) {
 	std::string m = " " + s + "\xff";
 	//std::string m =  s + "\xff";
-	log("send: " + m);
+	//log("send: " + m);
 	::send(sockfd, m.c_str(), strlen(m.c_str()), 0);
 
 }
@@ -150,10 +163,13 @@ int main(int argc, char** argv) {
 	Json::Value root;
 	root["data"] = Json::Value("Test");
 	rbc->publish("/hurga", "test2");
-	sleep(1);
-	rbc->publish("/hurga", "std_msgs/String", root);
-	rbc->run();
 
+	rbc->publish("/hurga", "std_msgs/String", root);
+	rbc->spin();
+	while(true) {
+		rbc->log(rbc->readLastValue("/odom")->toStyledString());
+		rbc->wait();
+	}
 
 //  struct addrinfo *address;
 //  getaddrinfo("marcs-pc", "9090", NULL, &address);
