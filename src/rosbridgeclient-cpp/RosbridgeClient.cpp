@@ -21,18 +21,20 @@ void RosbridgeClient::dispatch(std::string s) {
 
 	Json::Value msg = root["msg"];
 	std::string receiver = root["receiver"].asString();
-	log("receiver: " + receiver);
-	log("extracted msg " + msg.toStyledString());
 
-//	if (receiver.compare("/scan") == 0) {
-//		printf("scan: ");
-//		Json::Value ranges = msg["ranges"];
-//		for (int i = 0; i < ranges.size(); i++) {
-//			printf("%f ", ranges[i].asDouble());
-//		}
-//		printf("\n");
-//
-//	}
+	if (receiver.compare("/scan") == 0) {
+		last_values["/scan"] = msg["ranges"];
+		log("receiver: " + receiver);
+		log("extracted msg " + last_values["/scan"].toStyledString());
+	} else if (receiver.compare("/odom") == 0) {
+		last_values["/odom"] = msg["pose"];
+		log("receiver: " + receiver);
+		log("extracted msg " + last_values["/odom"].toStyledString());
+	} else if (receiver.compare("/amcl_pose") == 0) {
+		last_values["/amcl_pose"] = msg["pose"];
+		log("receiver: " + receiver);
+		log("extracted msg " + last_values["/amcl_pose"].toStyledString());
+	}
 
 }
 
@@ -99,7 +101,7 @@ void RosbridgeClient::wait() {
 }
 
 ValuePtr RosbridgeClient::readLastValue(const std::string& topic) {
-	return ValuePtr(new Json::Value());
+	return ValuePtr(&last_values[topic]);
 }
 
 void RosbridgeClient::spin() {
@@ -142,6 +144,8 @@ int main(int argc, char** argv) {
 			new rosbridge::RosbridgeClient("localhost", "9090"));
 	rbc->connect();
 	rbc->subscribe("/odom", 1000);
+	rbc->subscribe("/scan", 1000);
+	rbc->subscribe("/amcl_pose", 1000);
 
 	Json::Value root;
 	root["data"] = Json::Value("Test");

@@ -22,6 +22,7 @@
 #include <sstream>
 #include "json/json.h"
 #include <boost/smart_ptr.hpp>
+#include <map>
 
 namespace rosbridge {
 
@@ -34,6 +35,7 @@ class RosbridgeClient {
 	std::string host;
 	std::string port;
 	int sockfd;
+	std::map<std::string, Json::Value> last_values;
 
 public:
 	RosbridgeClient(std::string host, std::string port);
