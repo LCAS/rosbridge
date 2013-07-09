@@ -11,15 +11,15 @@ include_directories (
 )
 
 add_executable (
-	simple
+	rosbridgeclient_cpp
 	jsoncpp/src/lib_json/json_reader.cpp
 	jsoncpp/src/lib_json/json_value.cpp
 	jsoncpp/src/lib_json/json_writer.cpp
-	simple.cpp
+	RosbridgeClient.cpp
     )
 
 target_link_libraries (
-    simple
+    rosbridgeclient_cpp
     ${Boost_LIBRARIES}
 #    ${CMAKE_SOURCE_DIR}/jsoncpp-src-0.5.0/libs/linux-gcc-4.4.3/libjson_linux-gcc-4.4.3_libmt.a
 
