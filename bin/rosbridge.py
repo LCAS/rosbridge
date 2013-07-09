@@ -35,6 +35,7 @@ def encode(obj):
 def handleFrameHelper(frame, session, handleMsgFactory, sub, passfile, ros):
 	try:
 		call = ''
+		print "frame=" + frame;
 		if frame[0] != '\x00':
 			call = json.loads(frame)
 		else:
