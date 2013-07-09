@@ -5,25 +5,33 @@
  *      Author: marc
  */
 
-#include "RosbridgeClient.h"
+#include "SGTBridge.h"
 
 int main(int argc, char** argv) {
-	rosbridge::RosbridgeClientPtr rbc = rosbridge::RosbridgeClientPtr(
-			new rosbridge::RosbridgeClient("localhost", "9090"));
-	rbc->connect();
-	rbc->subscribe("/odom", 1000);
-	rbc->subscribe("/scan", 1000);
-	rbc->subscribe("/amcl_pose", 1000);
+	rosbridge::SGTBridge rbc("localhost", "9090");
+	rbc.connect();
+	rbc.subscribe("/odom", 1000);
+	rbc.subscribe("/scan", 1000);
 
 	Json::Value root;
 	root["data"] = Json::Value("Test");
-	rbc->publish("/hurga", "test2");
+	rbc.publish("/hurga", "test2");
 
-	rbc->publish("/hurga", "std_msgs/String", root);
-	rbc->spin();
+	rbc.publish("/hurga", "std_msgs/String", root);
+	rbc.spin();
+
+	rosbridge::SGTBridge::Pose p;
+	p.x=1.0;
+	p.y=1.0;
+	p.t=-M_PI/2;
+	rbc.goTo(p);
+	sleep(5);
 	while(true) {
-		rbc->log(rbc->readLastValue("/odom")->toStyledString());
-		rbc->wait();
+		printf("%s\n",rbc.readLastValue("/odom")->toStyledString().c_str());
+		printf("nsecs=%d #ranges=%ld\n", rbc.getScan().nsecs,rbc.getScan().ranges.size());
+		rosbridge::SGTBridge::Pose p = rbc.getPose();
+		printf("nsecs=%d #odom=%f,%f,%f\n", p.nsecs, p.x,p.y,p.t);
+		rbc.wait();
 	}
 
 //  struct addrinfo *address;

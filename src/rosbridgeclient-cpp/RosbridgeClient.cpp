@@ -144,7 +144,7 @@ void RosbridgeClient::publish(const std::string& topic,
 void RosbridgeClient::send(std::string s) {
 	std::string m = " " + s + "\xff";
 	//std::string m =  s + "\xff";
-	//log("send: " + m);
+	log("send: " + s);
 	::send(sockfd, m.c_str(), strlen(m.c_str()), 0);
 
 }

@@ -9,13 +9,36 @@
 #define SGTBRIDGE_H_
 
 #include "RosbridgeClient.h"
+#include <vector>
+
 
 namespace rosbridge {
 
 class SGTBridge: public rosbridge::RosbridgeClient {
+	static std::string templ;
+	Json::Value goalTemplateValue;
 public:
+	typedef struct {
+		std::vector<double> ranges;
+		int secs;
+		int nsecs;
+	} Scan;
+
+	typedef struct {
+		double x;
+		double y;
+		double t;
+		int secs;
+		int nsecs;
+	} Pose;
+
 	SGTBridge(std::string host, std::string port);
 	virtual ~SGTBridge();
+
+	Scan getScan();
+	bool goTo(Pose p);
+	Pose getPose();
+
 };
 
 } /* namespace rosbridge */

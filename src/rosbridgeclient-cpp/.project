@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Project@rosbridgeclient-cpp</name>
+	<name>Project-Debug@rosbridgeclient-cpp</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -222,6 +222,11 @@
 			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/SGTBridge.cpp</name>
 			<type>1</type>
 			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/SGTBridge.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/main.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/main.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] rosbridgeclient_cpp/Header Files</name>
