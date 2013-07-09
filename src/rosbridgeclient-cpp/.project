@@ -119,52 +119,132 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple</name>
+			<name>[Targets]/[lib] rosbridgeclient</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/</name>
+			<name>[Targets]/[lib] rosbridgeclient/</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Source Files</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Source Files/json_reader.cpp</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files/json_reader.cpp</name>
 			<type>1</type>
 			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_reader.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Source Files/json_value.cpp</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files/json_value.cpp</name>
 			<type>1</type>
 			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_value.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Source Files/json_writer.cpp</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files/json_writer.cpp</name>
 			<type>1</type>
 			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_writer.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Source Files/simple.cpp</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files/RosbridgeClient.cpp</name>
 			<type>1</type>
-			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/simple.cpp</location>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/RosbridgeClient.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Header Files</name>
+			<name>[Targets]/[lib] rosbridgeclient/Source Files/SGTBridge.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/SGTBridge.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] rosbridgeclient/Header Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/CMake Rules</name>
+			<name>[Targets]/[lib] rosbridgeclient/Header Files/RosbridgeClient.h</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/RosbridgeClient.h</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] rosbridgeclient/Header Files/SGTBridge.h</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/SGTBridge.h</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] rosbridgeclient/CMake Rules</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] simple/Resources</name>
+			<name>[Targets]/[lib] rosbridgeclient/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/json_reader.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_reader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/json_value.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_value.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/json_writer.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/jsoncpp/src/lib_json/json_writer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/RosbridgeClient.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/RosbridgeClient.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Source Files/SGTBridge.cpp</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/SGTBridge.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Header Files/RosbridgeClient.h</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/RosbridgeClient.h</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Header Files/SGTBridge.h</name>
+			<type>1</type>
+			<location>/home/marc/ros_ws/src/rosbridge/src/rosbridgeclient-cpp/SGTBridge.h</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] rosbridgeclient_cpp/Resources</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
