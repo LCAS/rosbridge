@@ -16,6 +16,17 @@ add_executable (
 	jsoncpp/src/lib_json/json_value.cpp
 	jsoncpp/src/lib_json/json_writer.cpp
 	RosbridgeClient.cpp
+	RosbridgeClient.h
+	main.cpp
+    )
+
+add_library(
+	rosbridgeclient
+	jsoncpp/src/lib_json/json_reader.cpp
+	jsoncpp/src/lib_json/json_value.cpp
+	jsoncpp/src/lib_json/json_writer.cpp
+	RosbridgeClient.cpp
+	RosbridgeClient.h
     )
 
 target_link_libraries (
