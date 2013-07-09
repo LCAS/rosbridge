@@ -1,0 +1,16 @@
+<package>
+  <description brief="rosbridge">
+rosbridge allows dynamic socket and web-socket based access to the full capabilities of ROS. A lightweight binding to Javascript for websocket-capable web browsers is included (ros.js), but access from any language supporting sockets and JSON is easy.
+  </description>
+
+  <author>Graylin Trevor Jay</author>
+  <email>tjay@cs.brown.edu</email>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+
+</package>
+
+

@@ -1,0 +1,10 @@
+brown:
+  ros2ros:
+    host1_address: localhost
+    host1_port: 9090
+    host2_address: shelob
+    host2_port: 9090
+    host1_topics: [/move_base/goal, /move_base/cancel]
+    host1_topic_types: [move_base_msgs/MoveBaseActionGoal, actionlib_msgs/GoalID]
+    host2_topics: [/move_base/feedback, /move_base/status, /move_base/result]
+    host2_topic_types: [move_base_msgs/MoveBaseActionFeedback, actionlib_msgs/GoalStatusArray, move_base_msgs/MoveBaseActionResult]
