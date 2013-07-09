@@ -2,3 +2,6 @@
 *~
 *.save
 *.pyc
+
+
+build/
