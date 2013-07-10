@@ -94,7 +94,10 @@ SGTBridge::Pose SGTBridge::getPose() {
 		res.y = (*scanMsg)["pose"]["pose"]["position"]["y"].asDouble();
 		double z = (*scanMsg)["pose"]["pose"]["orientation"]["z"].asDouble();
 		res.t = asin(z) * 2.0;
-		Value r = (*scanMsg)["ranges"];
+		res.dx = (*scanMsg)["twist"]["twist"]["linear"]["x"].asDouble();
+		res.dy = (*scanMsg)["twist"]["twist"]["linear"]["y"].asDouble();
+		double dz = (*scanMsg)["twist"]["twist"]["angular"]["z"].asDouble();
+		res.dt = asin(z) * 2.0;
 	}
 	return res;
 }

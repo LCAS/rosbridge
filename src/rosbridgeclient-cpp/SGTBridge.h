@@ -29,6 +29,9 @@ public:
 		double x;
 		double y;
 		double t;
+		double dx;
+		double dy;
+		double dt;
 		int secs;
 		int nsecs;
 	} Pose;
