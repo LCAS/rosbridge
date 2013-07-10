@@ -20,6 +20,7 @@ class SGTBridge: public rosbridge::RosbridgeClient {
 public:
 	typedef struct {
 		std::vector<double> ranges;
+		std::vector<double> angle;
 		int secs;
 		int nsecs;
 	} Scan;

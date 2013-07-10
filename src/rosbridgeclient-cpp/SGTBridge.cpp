@@ -56,8 +56,14 @@ SGTBridge::Scan SGTBridge::getScan() {
 		res.secs = (((*scanMsg)["header"])["stamp"])["secs"].asInt();
 		res.nsecs = (((*scanMsg)["header"])["stamp"])["nsecs"].asInt();
 		Value r = (*scanMsg)["ranges"];
+		double angle_min = (*scanMsg)["angle_min"].asDouble();
+		double angle_max = (*scanMsg)["angle_max"].asDouble();
+		double angle_increment = (*scanMsg)["angle_increment"].asDouble();
+		double angle=angle_min;
 		for (int i = 0; i < r.size(); i++) {
 			res.ranges.push_back(r[i].asDouble());
+			res.angle.push_back(angle);
+			angle+=angle_increment;
 		}
 	}
 	return res;
